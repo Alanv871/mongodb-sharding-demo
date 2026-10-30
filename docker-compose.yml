@@ -28,6 +28,15 @@ services:
     volumes:
       - shard2:/data/db
 
+  shard3:
+    image: mongo:7.0
+    command: --shardsvr --replSet shard3ReplSet --port 27021
+    container_name: shard3
+    ports:
+      - 27021:27021
+    volumes:
+      - shard3:/data/db
+
   mongos:
     image: mongo:7.0
     container_name: mongos
@@ -44,3 +53,4 @@ volumes:
   configsvr:
   shard1:
   shard2:
+  shard3:
